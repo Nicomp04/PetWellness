@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from "framer-motion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { User, Medicine } from "lucide-react";
+import { User, Pill } from "lucide-react";
 
 const ViewSelector = () => {
   return (
@@ -35,7 +35,7 @@ const ViewSelector = () => {
               <User className="mr-2 h-4 w-4" /> Pet Owner View
             </TabsTrigger>
             <TabsTrigger value="vet" className="py-3">
-              <Medicine className="mr-2 h-4 w-4" /> Veterinarian View
+              <Pill className="mr-2 h-4 w-4" /> Veterinarian View
             </TabsTrigger>
           </TabsList>
           
