@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,34 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Pet tracker theme colors
+				petBlue: {
+					DEFAULT: '#4A90E2',
+					50: '#EBF3FC',
+					100: '#C9DEF7',
+					200: '#9DC5F0',
+					300: '#70ACE9',
+					400: '#4A90E2',
+					500: '#2275D7',
+					600: '#1B5EAC',
+					700: '#144782',
+					800: '#0E3158',
+					900: '#071A2D',
+				},
+				petGreen: {
+					DEFAULT: '#58C093',
+					50: '#EFF9F5',
+					100: '#D4EFE3',
+					200: '#AAE0C6',
+					300: '#7FD0AA',
+					400: '#58C093',
+					500: '#3CA476',
+					600: '#2F835D',
+					700: '#236244',
+					800: '#17412C',
+					900: '#0A2114',
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +112,21 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' }
+				},
+				'pulse-slow': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.7' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'float': 'float 6s ease-in-out infinite',
+				'pulse-slow': 'pulse-slow 4s ease-in-out infinite'
 			}
 		}
 	},
