@@ -6,36 +6,54 @@ import ViewSelector from '../components/landing/ViewSelector';
 import WishlistForm from '../components/landing/WishlistForm';
 import Footer from '../components/landing/Footer';
 import Navbar from '../components/landing/Navbar';
-import { motion } from 'framer-motion';
+import { Switch } from "@/components/ui/switch";
+import { Moon, Sun } from "lucide-react";
 
 const Index = () => {
+  const [theme, setTheme] = React.useState<'light' | 'dark'>('light');
+
+  React.useEffect(() => {
+    const root = window.document.documentElement;
+    if (theme === 'dark') {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
+
   return (
-    <div className="min-h-screen">
+    <div className={`min-h-screen ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
       <Navbar />
       <Hero />
 
-      {/* Horizontal scrolling logos section */}
-      <section className="py-10 overflow-hidden bg-white border-y border-gray-100">
+      {/* Theme toggle */}
+      <div className="fixed top-20 right-4 z-50 flex items-center gap-2 bg-white dark:bg-gray-800 p-2 rounded-full shadow-md">
+        <Sun className="h-4 w-4" />
+        <Switch checked={theme === 'dark'} onCheckedChange={toggleTheme} />
+        <Moon className="h-4 w-4" />
+      </div>
+
+      {/* Static partners section */}
+      <section className={`py-10 overflow-hidden border-y ${theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'}`}>
         <div className="container mx-auto px-4">
-          <p className="text-center text-gray-500 mb-6">Trusted by pet care providers</p>
-          <div className="flex space-x-12 animate-pulse-slow">
-            <motion.div
-              initial={{ x: -1000 }}
-              animate={{ x: 0 }}
-              transition={{ 
-                duration: 30,
-                repeat: Infinity,
-                repeatType: "loop",
-                ease: "linear"
-              }}
-              className="flex space-x-12 items-center"
-            >
-              {[...Array(6)].map((_, i) => (
-                <div key={i} className="flex-shrink-0 w-32 h-12 bg-gray-200 rounded-md flex items-center justify-center">
-                  <div className="text-gray-400 font-medium">Partner {i + 1}</div>
+          <p className={`text-center mb-6 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>Trusted by pet care providers</p>
+          <div className="flex flex-wrap justify-center items-center gap-8">
+            {[1, 2, 3, 4].map((i) => (
+              <div 
+                key={i} 
+                className={`w-36 h-16 flex-shrink-0 rounded-md flex items-center justify-center ${
+                  theme === 'dark' ? 'bg-gray-700' : 'bg-gray-100'
+                }`}
+              >
+                <div className={`font-medium ${theme === 'dark' ? 'text-gray-300' : 'text-gray-500'}`}>
+                  Partner {i}
                 </div>
-              ))}
-            </motion.div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
