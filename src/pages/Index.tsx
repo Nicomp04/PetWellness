@@ -13,24 +13,12 @@ const Index = () => {
   const [theme, setTheme] = React.useState<'light' | 'dark'>('light');
 
   React.useEffect(() => {
-    // Check if user has a saved preference
-    const savedTheme = localStorage.getItem('pet-health-theme');
-    if (savedTheme) {
-      setTheme(savedTheme as 'light' | 'dark');
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setTheme('dark');
-    }
-  }, []);
-
-  React.useEffect(() => {
     const root = window.document.documentElement;
     if (theme === 'dark') {
       root.classList.add('dark');
     } else {
       root.classList.remove('dark');
     }
-    // Save the preference to localStorage
-    localStorage.setItem('pet-health-theme', theme);
   }, [theme]);
 
   const toggleTheme = () => {
