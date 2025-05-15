@@ -13,7 +13,7 @@ const Index = () => {
       <Navbar />
       <Hero />
 
-      {/* Static partners section */}
+      {/* Partners section hidden for now - uncomment when needed 
       <section className="py-10 overflow-hidden border-y bg-white border-gray-100">
         <div className="container mx-auto px-4">
           <p className="text-center mb-6 text-gray-500">Trusted by pet care providers</p>
@@ -31,6 +31,7 @@ const Index = () => {
           </div>
         </div>
       </section>
+      */}
 
       <Features />
       <ViewSelector />
